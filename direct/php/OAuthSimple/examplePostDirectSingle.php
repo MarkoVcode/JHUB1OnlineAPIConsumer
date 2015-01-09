@@ -2,7 +2,7 @@
     include ('./OAuthSimple.php');
 #error_reporting(E_ALL);
 
-$key = "edc_this-is-my-user-key"; // this is your consumer key
+$key = "edc_this-is-my-user-keyqqqqqq"; // this is your consumer key
 $secret = "edc_this-is-my-user-secret-key"; // this is your secret key
 $url = 'http://192.168.56.30:8189/api/v1/direct/edc_address0/mySensor/23424234'; // this is the URL of the request
 

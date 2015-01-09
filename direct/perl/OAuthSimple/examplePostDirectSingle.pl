@@ -4,30 +4,29 @@ use Data::Dumper;
 use LWP::UserAgent;
 use OAuthSimple;
 
+my $url = "http://192.168.56.30:8189/api/v1/direct/edc_address0/mySensor/23";
 
 my $oauth = new OAuthSimple("edc_this-is-my-user-key", "edc_this-is-my-user-secret-key");
 $oauth->setAction("POST");
-$oauth->setURL("http://localhost:8189/api/v1/direct/edc_address0/mySensor/23");
+$oauth->setURL($url);
 my $signElems = $oauth->sign();
 
 
-
-
-
-
+print(Dumper($signElems));
 
 my $ua = LWP::UserAgent->new;
  
-my $server_endpoint = "http://192.168.1.1:8000/service";
- 
 # set custom HTTP request header fields
-my $req = HTTP::Request->new(POST => $server_endpoint);
-$req->header('content-type' => 'application/json');
-$req->header('x-auth-token' => 'kfksj48sdfj4jd9d');
+my $req = HTTP::Request->new(POST => $url);
+#$req->header('content-type' => 'application/json');
+$req->header('Authorization' => $signElems->{header});
+
+#print(Dumper($req));
+
  
 # add POST data to HTTP request body
-my $post_data = '{ "name": "Dan", "address": "NY" }';
-$req->content($post_data);
+#my $post_data = '{ "name": "Dan", "address": "NY" }';
+#$req->content($post_data);
  
 my $resp = $ua->request($req);
 if ($resp->is_success) {
@@ -45,7 +44,7 @@ else {
 
 
 
-print(Dumper($oauth));
+#print(Dumper($oauth));
 
 
-print(Dumper($signElems));
+#print(Dumper($signElems));
