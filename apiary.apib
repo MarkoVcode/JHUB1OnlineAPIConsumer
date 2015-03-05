@@ -29,18 +29,14 @@ Notes related resources of the **Notes API**
 A single Note object with all its details
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
-
-### Retrieve a Note [GET]
+    + directId (required, string, `D3aFBoJSgxnKPzD5rT`) ... String `directId` of the Direct that holds the collection of sources.
+    
+### Retrieve all sources with current values [GET]
 + Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: The Value
 
     + Body
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
+            {"sources":[{"name":"TestSourceC","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceC","date":"2015-03-03T21:24:31.325Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceC","properties":null},{"name":"TestSourceB","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceB","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceB","properties":null},{"name":"TestSourceA","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceA","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceA","properties":null},{"name":"DwF4sGijKcLYAkqNAT","value":"334","address":"/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","date":"2015-03-03T21:35:15.531Z","count":1,"normalizedValue":"334","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","properties":null}]}
 
-### Remove a Note [DELETE]
+### Submit multi source - value payload [POST]
 + Response 204
