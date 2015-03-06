@@ -19,8 +19,19 @@ A single Note object with all its details
 
             {"sources":[{"name":"TestSourceC","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceC","date":"2015-03-03T21:24:31.325Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceC","properties":null},{"name":"TestSourceB","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceB","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceB","properties":null},{"name":"TestSourceA","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceA","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceA","properties":null},{"name":"DwF4sGijKcLYAkqNAT","value":"334","address":"/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","date":"2015-03-03T21:35:15.531Z","count":1,"normalizedValue":"334","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","properties":null}]}
 
-### Submit multi source - value payload [POST]
-+ Response 204
+### Record single/multi value [POST]
++ Request (application/json)
+
+    + Body
+        
+            {"values":[{"name":"temperatureOutside","value":"13.2"},{"name":"temperatureInside","value":"19.8"}]}
+
++ Response 200 (application/json)
+
+    + Body
+        
+            {"values":[{"name":"temperatureOutside","value":"13.2","date":"2015-03-03T23:14:18.231Z","slot":1425424200,"status":"OK","result":"SAVED","errorMessage":null},{"name":"temperatureInside","value":"19.8","date":"2015-03-03T23:14:18.231Z","slot":1425424200,"status":"OK","result":"SAVED","errorMessage":null}],"errorMessage":null}
+
 
 ## Multi values operations for a single direct [/direct/{directId}/{sourceName}]
 A single Note object with all its details
@@ -35,3 +46,19 @@ A single Note object with all its details
     + Body
 
             {"sources":[{"name":"TestSourceC","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceC","date":"2015-03-03T21:24:31.325Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceC","properties":null},{"name":"TestSourceB","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceB","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceB","properties":null},{"name":"TestSourceA","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceA","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceA","properties":null},{"name":"DwF4sGijKcLYAkqNAT","value":"334","address":"/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","date":"2015-03-03T21:35:15.531Z","count":1,"normalizedValue":"334","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","properties":null}]}
+
+## Multi values operations for a single direct [/direct/{directId}/{sourceName}/{value}]
+A single Note object with all its details
+
++ Parameters
+    + directId (required, string, `D3aFBoJSgxnKPzD5rT`) ... String `directId` of the Direct that holds the collection of sources.
+    + sourceName (required, string, `outsideTemperature`) ... String `sourceName` describes the name of the collection of the gathered values.
+    + value (required, string, `14.5`) ... String `value` is a representation of the single value that belongs to the collection `sourceName`.
+
+### Record single value [POST]
++ Response 200 (application/json)
+
+    + Body
+
+            {"values":[{"name":"outsideTemperature","value":"14.5","date":"2015-03-03T23:09:05.327Z","slot":1425423900,"status":"OK","result":"SAVED","errorMessage":null}],"errorMessage":null}
+
