@@ -17,9 +17,9 @@ A single Note object with all its details
 
     + Body
 
-            {"sources":[{"name":"TestSourceC","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceC","date":"2015-03-03T21:24:31.325Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceC","properties":null},{"name":"TestSourceB","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceB","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceB","properties":null},{"name":"TestSourceA","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceA","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceA","properties":null},{"name":"DwF4sGijKcLYAkqNAT","value":"334","address":"/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","date":"2015-03-03T21:35:15.531Z","count":1,"normalizedValue":"334","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","properties":null}]}
+            {"sources":[{"name":"temperatureOutside","value":"13.1","address":"/D3aFBoJSgxnKPzD5rT/temperatureOutside","date":"2015-03-03T21:24:31.325Z","count":22,"normalizedValue":"13.1","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/temperatureOutside","properties":null},{"name":"temperatureInside","value":"21.1","address":"/D3aFBoJSgxnKPzD5rT/temperatureInside","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"21.1","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/temperatureInside","properties":null},{"name":"TestSourceA","value":"27","address":"/D3aFBoJSgxnKPzD5rT/TestSourceA","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"27","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceA","properties":null},{"name":"DwF4sGijKcLYAkqNAT","value":"334","address":"/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","date":"2015-03-03T21:35:15.531Z","count":1,"normalizedValue":"334","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","properties":null}]}
 
-### Record single/multi value [POST]
+### Record single/multi value as request payload [POST]
 + Request (application/json)
 
     + Body
@@ -55,7 +55,7 @@ A single Note object with all its details
     + sourceName (required, string, `outsideTemperature`) ... String `sourceName` describes the name of the collection of the gathered values.
     + value (required, string, `14.5`) ... String `value` is a representation of the single value that belongs to the collection `sourceName`.
 
-### Record single value [POST]
+### Record single value as request uri [POST]
 + Response 200 (application/json)
 
     + Body
