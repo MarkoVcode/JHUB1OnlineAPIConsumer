@@ -1,26 +1,76 @@
 FORMAT: 1A
 
 # Direct Service API
-Data aquisition interface for Direct service Direct is a simple service with *confugurable* authentication method for data aquisiton.
+Data aquisition interface for Direct service.
+Direct is a simple service with *confugurable* authentication method for data aquisiton.
+All authentications types can be set for read and write operation individually on direct basis.
+There are three authentication options:
+* **oAuth**
+* **http Basic**
+* **no authentication**
 
 # Direct
+Direct helps your device to record, store and access your 
+Allows 
 Here description and terminology Notes related resources of the **Direct API**
-Allows you to record single/value multi value and inspect current values
+Allows you to record single or multi value and inspect current values
+* **directId** - Is automatically generated unique identifier of the family of collections. Authentication settings set for **direct** apply to all the family members.
+* **source** - Is the most basic collection unit that belongs to **direct** its name can be created by user however please mind the validation restrictions. For instance it can be *roomTemperature* each time you submit this name with corresponding value it is going to be added to the collection *roomTemperature* of the **direct** that *roomTemperature* belongs to.  
+* **endpoint** - It is the source that has defined type. Each source initially doesnt have assigned type at all but from the moment the type is assigned it is becoming a fully qualified endpoint. Type describes the source value data type also stores a few other informations like geolocation etc. Providing these informations is optional.
 
-## Multi values operations for a single direct [/direct/{directId}]
+
+direct=
+endpoints=
+sources=
+
+## Quick add single value to source collection [/direct/{directId}/{sourceName}/{value}]
+A single Note object with all its details
+
++ Parameters
+    + directId (required, string, `D3aFBoJSgxnKPzD5rT`) ... String `directId` of the Direct that holds the collection of sources.
+    + sourceName (required, string, `outsideTemperature`) ... String `sourceName` describes the name of the collection of the gathered values.
+    + value (required, string, `14.5`) ... String `value` is a representation of the single value that belongs to the collection `sourceName`.
+
+### Adding single value to collection [POST]
+Record single value as request uri
++ Response 200 (application/json)
+
+    + Body
+
+            {"values":[{"name":"outsideTemperature","value":"14.5","date":"2015-03-03T23:09:05.327Z","slot":1425423900,"status":"OK","result":"SAVED","errorMessage":null}],"errorMessage":null}
+
+## Checking up on source value [/direct/{directId}/{sourceName}]
+A single Note object with all its details
+
++ Parameters
+    + directId (required, string, `D3aFBoJSgxnKPzD5rT`) ... String `directId` of the Direct that holds the collection of sources.
+    + sourceName (required, string, `outsideTemperature`) ... String `sourceName` describes the name of the collection of the gathered values
+
+### Show recent source's value [GET]
+Retrieve all sources with current values
++ Response 200 (application/json)
+
+    + Body
+
+            {"sources":[{"name":"TestSourceC","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceC","date":"2015-03-03T21:24:31.325Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceC","properties":null},{"name":"TestSourceB","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceB","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceB","properties":null},{"name":"TestSourceA","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceA","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceA","properties":null},{"name":"DwF4sGijKcLYAkqNAT","value":"334","address":"/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","date":"2015-03-03T21:35:15.531Z","count":1,"normalizedValue":"334","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","properties":null}]}
+
+
+## Operations on direct [/direct/{directId}]
 A single Note object with all its details
 
 + Parameters
     + directId (required, string, `D3aFBoJSgxnKPzD5rT`) ... String `directId` of the Direct that holds the collection of sources.
 
-### Retrieve all sources with current values [GET]
+### Show direct's sources [GET]
+Retrieve collection of endpoints/sources with most recent values
 + Response 200 (application/json)
 
     + Body
 
             {"sources":[{"name":"temperatureOutside","value":"13.1","address":"/D3aFBoJSgxnKPzD5rT/temperatureOutside","date":"2015-03-03T21:24:31.325Z","count":22,"normalizedValue":"13.1","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/temperatureOutside","properties":null},{"name":"temperatureInside","value":"21.1","address":"/D3aFBoJSgxnKPzD5rT/temperatureInside","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"21.1","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/temperatureInside","properties":null},{"name":"TestSourceA","value":"27","address":"/D3aFBoJSgxnKPzD5rT/TestSourceA","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"27","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceA","properties":null},{"name":"DwF4sGijKcLYAkqNAT","value":"334","address":"/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","date":"2015-03-03T21:35:15.531Z","count":1,"normalizedValue":"334","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","properties":null}]}
 
-### Record single/multi value as request payload [POST]
+### Add sources to direct's collection  [POST]
+Record single or multi value as a request payload
 + Request (application/json)
 
     + Body
@@ -34,32 +84,5 @@ A single Note object with all its details
             {"values":[{"name":"temperatureOutside","value":"13.2","date":"2015-03-03T23:14:18.231Z","slot":1425424200,"status":"OK","result":"SAVED","errorMessage":null},{"name":"temperatureInside","value":"19.8","date":"2015-03-03T23:14:18.231Z","slot":1425424200,"status":"OK","result":"SAVED","errorMessage":null}],"errorMessage":null}
 
 
-## Multi values operations for a single direct [/direct/{directId}/{sourceName}]
-A single Note object with all its details
 
-+ Parameters
-    + directId (required, string, `D3aFBoJSgxnKPzD5rT`) ... String `directId` of the Direct that holds the collection of sources.
-    + sourceName (required, string, `outsideTemperature`) ... String `sourceName` describes the name of the collection of the gathered values
-
-### Retrieve all sources with current values [GET]
-+ Response 200 (application/json)
-
-    + Body
-
-            {"sources":[{"name":"TestSourceC","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceC","date":"2015-03-03T21:24:31.325Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceC","properties":null},{"name":"TestSourceB","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceB","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceB","properties":null},{"name":"TestSourceA","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceA","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceA","properties":null},{"name":"DwF4sGijKcLYAkqNAT","value":"334","address":"/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","date":"2015-03-03T21:35:15.531Z","count":1,"normalizedValue":"334","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","properties":null}]}
-
-## Multi values operations for a single direct [/direct/{directId}/{sourceName}/{value}]
-A single Note object with all its details
-
-+ Parameters
-    + directId (required, string, `D3aFBoJSgxnKPzD5rT`) ... String `directId` of the Direct that holds the collection of sources.
-    + sourceName (required, string, `outsideTemperature`) ... String `sourceName` describes the name of the collection of the gathered values.
-    + value (required, string, `14.5`) ... String `value` is a representation of the single value that belongs to the collection `sourceName`.
-
-### Record single value as request uri [POST]
-+ Response 200 (application/json)
-
-    + Body
-
-            {"values":[{"name":"outsideTemperature","value":"14.5","date":"2015-03-03T23:09:05.327Z","slot":1425423900,"status":"OK","result":"SAVED","errorMessage":null}],"errorMessage":null}
 
