@@ -9,7 +9,7 @@ There are three authentication options:
 * **http Basic**
 * **no authentication**
 
-# Direct
+# What is Direct Service
 Direct helps your device to record, store and access your 
 Allows 
 Here description and terminology Notes related resources of the **Direct API**
@@ -18,10 +18,14 @@ Allows you to record single or multi value and inspect current values
 * **source** - Is the most basic collection unit that belongs to **direct** its name can be created by user however please mind the validation restrictions. For instance it can be *roomTemperature* each time you submit this name with corresponding value it is going to be added to the collection *roomTemperature* of the **direct** that *roomTemperature* belongs to.  
 * **endpoint** - It is the source that has defined type. Each source initially doesnt have assigned type at all but from the moment the type is assigned it is becoming a fully qualified endpoint. Type describes the source value data type also stores a few other informations like geolocation etc. Providing these informations is optional.
 
+#Recording your values
+wewqewq
 
-direct=
-endpoints=
-sources=
+#Recording response JSON
+
+#Value repersentation JSON
+
+
 
 ## Quick add single value to source collection [/direct/{directId}/{sourceName}/{value}]
 A single Note object with all its details
@@ -55,7 +59,7 @@ Retrieve all sources with current values
             {"sources":[{"name":"TestSourceC","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceC","date":"2015-03-03T21:24:31.325Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceC","properties":null},{"name":"TestSourceB","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceB","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceB","properties":null},{"name":"TestSourceA","value":"22","address":"/D3aFBoJSgxnKPzD5rT/TestSourceA","date":"2015-03-03T21:24:31.324Z","count":22,"normalizedValue":"22","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/TestSourceA","properties":null},{"name":"DwF4sGijKcLYAkqNAT","value":"334","address":"/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","date":"2015-03-03T21:35:15.531Z","count":1,"normalizedValue":"334","description":null,"longDescription":null,"icon":null,"color":null,"geoLocalization":null,"type":null,"href":"http://localhost:8189/api/v1/direct/D3aFBoJSgxnKPzD5rT/DwF4sGijKcLYAkqNAT","properties":null}]}
 
 
-## Operations on direct [/direct/{directId}]
+## Operations on sources [/direct/{directId}]
 A single Note object with all its details
 
 + Parameters
