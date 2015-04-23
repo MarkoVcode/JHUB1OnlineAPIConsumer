@@ -9,9 +9,9 @@ Direct helps your device to record, store and access your
 Allows 
 Here description and terminology Notes related resources of the **Direct API**
 Allows you to record single or multi value and inspect current values
-* **directId** - Is automatically generated unique identifier of the family of collections. Authentication settings set for **direct** apply to all the family members.
-* **source** - Is the most basic collection unit that belongs to **direct** its name can be created by user however please mind the validation restrictions. For instance it can be *roomTemperature* each time you submit this name with corresponding value it is going to be added to the collection *roomTemperature* of the **direct** that *roomTemperature* belongs to.  
-* **endpoint** - It is the source that has defined type. Each source initially doesnt have assigned type at all but from the moment the type is assigned it is becoming a fully qualified endpoint. Type describes the source value data type also stores a few other informations like geolocation etc. Providing these informations is optional.
+* **directId** - Is automatically generated unique identifier of the family of collections. Direct owns number of sources. Authentication settings set for **direct** apply to all the family members.
+* **source** - Is the most basic collection unit that belongs to **direct** its name **sourceName** can be created by user however it can only contain alfanumeric characters - no spaces . For instance it could be *roomTemperature* each time you submit this name with corresponding value it is going to be added to the collection *roomTemperature* of the **direct** that *roomTemperature* belongs to.  
+* **endpoint** - Holds all the additional informations that can describe source like type for instance. Endpoint of certain type with name, description, geo localization can be assigned to source *roomTemperature*. Each source initially doesnt have assigned type at all but from the moment the type is assigned it is becoming a fully qualified endpoint. Type describes the source value data type.
 
 # Data security
 Data aquisition interface for Direct service.
@@ -36,8 +36,8 @@ A single Note object with all its details
 
 + Parameters
     + directId (required, string, `D3aFBoJSgxnKPzD5rT`) ... String `directId` of the Direct that holds the collection of sources.
-    + sourceName (required, string, `outsideTemperature`) ... String `sourceName` describes the name of the collection of the gathered values.
-    + value (required, string, `14.5`) ... String `value` is a representation of the single value that belongs to the collection `sourceName`.
+    + sourceName (required, string, `outsideTemperature`) ... String `sourceName` describes the name of the collection of the gathered values. `sourceName` is created by user, can only contain alfanumeric characters - no spaces.
+    + value (required, string, `14.5`) ... String `value` is a representation of the single value that belongs to the collection `sourceName`. Represents the value that is being provided by source.
 
 ### Adding single value to collection [POST]
 Record single value as request uri
